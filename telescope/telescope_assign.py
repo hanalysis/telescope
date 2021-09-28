@@ -28,6 +28,7 @@ __copyright__ = "Copyright (C) 2019 Matthew L. Bendall"
 
 class AssignOptions(utils.SubcommandOptions):
     OPTS = """
+<<<<<<< HEAD
         - Input Options:
             - samfile:
                 positional: True
@@ -216,7 +217,7 @@ def run(args):
     Annotation = get_annotation_class(opts.annotation_class)
     lg.info('Loading annotation...')
     stime = time()
-    annot = Annotation(opts.gtffile, opts.attribute)
+    annot = Annotation(opts.gtffile, opts.attribute, opts.stranded_mode)
     lg.info("Loaded annotation in {}".format(fmtmins(time() - stime)))
     lg.info('Loaded {} features.'.format(len(annot.loci)))
 
