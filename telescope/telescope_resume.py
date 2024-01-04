@@ -20,12 +20,12 @@ from . import utils
 from .utils.helpers import format_minutes as fmtmins
 
 from .utils.model import Telescope, TelescopeLikelihood
-from .telescope_assign import IDOptions
+from .telescope_assign import AssignOptions
 
 __author__ = 'Matthew L. Bendall'
 __copyright__ = "Copyright (C) 2019 Matthew L. Bendall"
 
-class ResumeOptions(IDOptions):
+class ResumeOptions(AssignOptions):
     OPTS = """
     - Input Options:
         - checkpoint:
@@ -101,6 +101,8 @@ class ResumeOptions(IDOptions):
             action: store_true
             help: Use difference in log-likelihood as convergence criteria.
     """
+
+
 
 def run(args):
     """

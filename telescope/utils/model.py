@@ -545,7 +545,6 @@ class Telescope(object):
         else:
             return '<Telescope>'
 
-
 class TelescopeLikelihood(object):
     """
 
