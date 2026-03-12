@@ -535,7 +535,7 @@ class Telescope(object):
         lg.log(loglev, '        {} map to multiple loci.'.format(
             _d['overlap_ambig']))
         lg.log(loglev, '\n')
-    
+
     def __str__(self):
         if hasattr(self.opts, 'samfile'):
             return '<Telescope samfile=%s, gtffile=%s>'.format(
@@ -594,7 +594,7 @@ class TelescopeLikelihood(object):
         # Y[i] is the ambiguity indicator for fragment i, where Y[i]=1 if
         # fragment i is aligned to multiple transcripts and Y[i]=0 otherwise.
         # Store as N x 1 matrix
-        self.Y = (self.Q.count(1) > 1).astype(np.int)
+        self.Y = (self.Q.count(1) > 1).astype(np.uint8)
         self._yslice = self.Y[:,0].nonzero()[0]
 
         # Log-likelihood score
