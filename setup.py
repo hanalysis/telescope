@@ -9,6 +9,9 @@ from os import path, environ
 from setuptools import setup
 from setuptools import Extension
 from setuptools import find_packages
+import sysconfig
+python_lib_dir = sysconfig.get_config_var('LIBDIR')
+python_lib = sysconfig.get_config_var('LDLIBRARY')
 
 from telescope._version import VERSION
 
@@ -36,6 +39,8 @@ extensions = [
     Extension("telescope.utils.calignment",
               ["telescope/utils/calignment"+ext],
               include_dirs=htslib_include_dirs,
+              library_dirs=[python_lib_dir],
+              libraries=['python3.6m'],
               language='c'
               ),
 ]
