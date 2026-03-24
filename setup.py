@@ -19,6 +19,8 @@ USE_CYTHON = True
 
 CC = environ.get('CC', 'gcc')
 os.environ['CC'] = CC
+LDSHARED = environ.get('LDSHARED', CC + ' - shared')
+os.environ['LDSHARED'] = LDSHARED
 PREFIX = environ.get("PREFIX", '.')
 HTSLIB_INCLUDE_DIR = environ.get("HTSLIB_INCLUDE_DIR", None)
 
