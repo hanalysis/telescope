@@ -6,7 +6,7 @@ from __future__ import print_function
 
 import os
 from os import path, environ
-from distutils.core import setup
+#from distutils.core import setup
 from setuptools import Extension
 from setuptools import find_packages
 
@@ -17,16 +17,15 @@ __copyright__ = "Copyright (C) 2019 Matthew L. Bendall"
 
 USE_CYTHON = True
 
-# Adding language call for bioconda
 CC = environ.get('CC', 'gcc')
 os.environ['CC'] = CC
-CONDA_PREFIX = environ.get("CONDA_PREFIX", '.')
+PREFIX = environ.get("PREFIX", '.')
 HTSLIB_INCLUDE_DIR = environ.get("HTSLIB_INCLUDE_DIR", None)
 
 htslib_include_dirs = [
     HTSLIB_INCLUDE_DIR,
-    path.join(CONDA_PREFIX, 'include'),
-    path.join(CONDA_PREFIX, 'include', 'htslib'),
+    path.join(PREFIX, 'include'),
+    path.join(PREFIX, 'include', 'htslib'),
 ]
 htslib_include_dirs = [d for d in htslib_include_dirs if path.exists(str(d)) ]
 
