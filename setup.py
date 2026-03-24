@@ -4,6 +4,7 @@
 """
 from __future__ import print_function
 
+import os
 from os import path, environ
 from distutils.core import setup
 from setuptools import Extension
@@ -16,6 +17,9 @@ __copyright__ = "Copyright (C) 2019 Matthew L. Bendall"
 
 USE_CYTHON = True
 
+# Adding language call for bioconda
+CC = environ.get('CC', 'gcc')
+os.environ['CC'] = CC
 CONDA_PREFIX = environ.get("CONDA_PREFIX", '.')
 HTSLIB_INCLUDE_DIR = environ.get("HTSLIB_INCLUDE_DIR", None)
 
@@ -31,6 +35,7 @@ extensions = [
     Extension("telescope.utils.calignment",
               ["telescope/utils/calignment"+ext],
               include_dirs=htslib_include_dirs,
+              language='c'
               ),
 ]
 
