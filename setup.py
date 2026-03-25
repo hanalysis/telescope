@@ -9,11 +9,8 @@ from os import path, environ
 from setuptools import setup
 from setuptools import Extension
 from setuptools import find_packages
-import sysconfig
-python_lib_dir = sysconfig.get_config_var('LIBDIR')
-python_lib = sysconfig.get_config_var('LDLIBRARY')
-
 from telescope._version import VERSION
+import sys
 
 __author__ = 'Matthew L. Bendall'
 __copyright__ = "Copyright (C) 2019 Matthew L. Bendall"
@@ -34,13 +31,16 @@ htslib_include_dirs = [
 ]
 htslib_include_dirs = [d for d in htslib_include_dirs if path.exists(str(d)) ]
 
+extra_link_args = []
+if sys.platform == 'darwin':
+    extra_link_args = ['-undefined', 'dynamic_lookup']
+
 ext = '.pyx' if USE_CYTHON else '.c'
 extensions = [
     Extension("telescope.utils.calignment",
               ["telescope/utils/calignment"+ext],
               include_dirs=htslib_include_dirs,
-              library_dirs=[python_lib_dir],
-              libraries=['python3.6m'],
+              extra_link_args=extra_link_args,
               language='c'
               ),
 ]
