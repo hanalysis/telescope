@@ -28,7 +28,6 @@ __copyright__ = "Copyright (C) 2019 Matthew L. Bendall"
 
 class AssignOptions(utils.SubcommandOptions):
     OPTS = """
-<<<<<<< HEAD
         - Input Options:
             - samfile:
                 positional: True
