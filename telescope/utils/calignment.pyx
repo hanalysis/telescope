@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from calignment cimport AlignedPair
+from telescope.utils.calignment cimport AlignedPair
 
 # from pysam.libcalignedsegment cimport AlignedSegment
 # from pysam.libcalignedsegment cimport AlignmentFile
@@ -66,6 +66,10 @@ cdef class AlignedPair:
     @property
     def is_unmapped(self):
        return self.r1.is_unmapped
+
+    @property
+    def r1_is_reversed(self):
+        return self.r1.is_reverse
 
     @property
     def ref_name(self):

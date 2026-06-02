@@ -74,8 +74,8 @@ def main():
                        elements''',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
-    telescope_assign.IDOptions.add_arguments(assign_parser)
-    assign_parser.set_defaults(func=telescope_assign.run)
+    telescope_assign.AssignOptions.add_arguments(assign_parser)
+    assign_parser.set_defaults(func=lambda args: telescope_assign.run(args))
 
     ''' Parser for resume '''
     resume_parser = subparsers.add_parser('resume',
@@ -83,8 +83,8 @@ def main():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     telescope_resume.ResumeOptions.add_arguments(resume_parser)
-    resume_parser.set_defaults(func=telescope_resume.run)
 
+    resume_parser.set_defaults(func=lambda args: telescope_resume.run(args))
     test_parser = subparsers.add_parser('test',
         description='''Print a test command''',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
