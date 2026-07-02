@@ -9,7 +9,7 @@
 __author__ = 'Matthew L. Bendall'
 __copyright__ = "Copyright (C) 2019 Matthew L. Bendall"
 
-VERSION = '1.0.3'
+VERSION = '1.0.4.1'
 
 """
 # Add git hash to version number (if possible)
